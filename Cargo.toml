@@ -1,0 +1,21 @@
+[package]
+name = "exista"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+exista_lib = {path = "../exista_lib"}
+
+# MODBUS
+#tokio-modbus = { version = "*", default-features = false, features = ["rtu"] }
+#tokio-modbus = "0.5.4"
+#tokio-serial = "5.4.4"
+
+# SERIAL
+#serial-core = "0.4.0"
+serial = "0.4.0"
+
+#[build]
+#target = ["aarch64-unknown-linux-gnu"]
