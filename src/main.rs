@@ -10,11 +10,9 @@ fn main() -> Result<(), Box<dyn Error>>{
     let args: Vec<String> = env::args().collect();
 
     let path = args.get(1).ok_or("Arguments error! Path to port")?;
-    let duration = args.get(2).ok_or("Arguments error! Interval of timeout (millisec)")?;
+    let duration = args.get(2).ok_or("Arguments error! Port timeout (millisec)")?;
     let timeout:u64 = duration.parse()?;
-    //let type_msg = args.get(3).ok_or("Arguments error! msg type")?;
-    let rev = args.get(3).ok_or("Arguments error! crc rev = 1. Orig: else")?;
-    let rev:u8 = rev.parse()?;
+
 
     let port = match modbus::config(path, timeout){
         Ok(port)=>port,
@@ -22,7 +20,7 @@ fn main() -> Result<(), Box<dyn Error>>{
     };
 
 
-    if let Err(err) = modbus::run(port, rev){
+    if let Err(err) = modbus::run(port){
         println!("ERROR RUNNING MODBUS: {err}");
         return Err(err)
     };
