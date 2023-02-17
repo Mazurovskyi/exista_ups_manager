@@ -7,12 +7,11 @@ use std::{result::Result, error::Error, env};
 
 fn main() -> Result<(), Box<dyn Error>>{
 
-    let args: Vec<String> = env::args().collect();
-    
-    let path = args.get(1).unwrap_or_default();
+    //let _args: Vec<String> = env::args().collect();
+    //let _path = args.get(1).unwrap_or_default();
 
     //configure the application
-    let app_entities = match app::config(path){
+    let app_entities = match app::config(){
         Ok(app_entities) => app_entities,
         Err(err) => return Err(format!("CONFIGURATION ERROR: {err}").into())
     };
